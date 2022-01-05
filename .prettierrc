@@ -1,0 +1,15 @@
+{
+  "semi": true,
+  "printWidth": 120,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "importOrder": [
+    "^fastify$",
+    "^graphql$",
+    "^apollo-server-core$",
+    "^apollo-server-fastify$",
+    "^apollo-server-plugin-base$",
+    "^@/lib/(.*)$",
+    "^(.*)$"
+  ]
+}

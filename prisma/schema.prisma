@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id        String        @id @default(uuid())
+  title     String
+  body      String
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  tags      TagsOnPosts[]
+}
+
+model Tag {
+  id        String        @id @default(uuid())
+  name      String
+  colorCode String?
+  posts     TagsOnPosts[]
+}
+
+model TagsOnPosts {
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+  tag    Tag    @relation(fields: [tagId], references: [id])
+  tagId  String
+
+  @@id([postId, tagId])
+}
